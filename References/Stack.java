@@ -1,71 +1,50 @@
-class Node
+class Node<T>
 {
-	private Object data;
-	private Node parent;
+	public T Data;
+	public Node<T> Parent;
 	
-	public Node()
+	public Node(T data, Node<T> parent)
 	{
-		data = null;
-		parent = null;
+		this.Data = data;
+		this.Parent = parent;
 	}
 	
-	public Node(Object obj, Node node)
+	public void Clear()
 	{
-		data = obj;
-		parent = node;
-	}
-	
-	public Node Clone()
-	{
-		return new Node(this.data, this.parent);
-	}	
-	
-	
-	public void Set(Object obj, Node node)
-	{
-		data = obj;
-		parent = node;
-	}
-	
-	public Object getData()
-	{
-		return data == null ? null : data;
-	}
-	
-	public Node getParent()
-	{
-		return parent;
+		this.Data = null;
+		this.Parent = null;
 	}
 }
 
 class Stack<T>
 {
-	private Node currentNode;
+	private Node<T> current;
 	
 	public Stack()
 	{
-		currentNode = null;
+		current = null;
 	}
 	
 	public void push(T item)
 	{
-		Node before = null;
-		if (currentNode != null)
-		{
-			before = currentNode.Clone();
-		}		
-		currentNode = new Node(item, before);
+		Node<T> newNode = new Node<T>(item, current);
+		current = newNode;
 	}
 	
-	@SuppressWarnings("unchecked")
 	public T pop()
 	{
 		T result = null;
 		
-		if (currentNode != null)
+		if (current != null)
 		{
-			result = (T) currentNode.getData();
-			currentNode = currentNode.getParent();
+			result = current.Data;
+			
+			Node<T> parent = current.Parent;
+			
+			current.Clear();
+			current = null;
+			
+			current = parent;
 		}
 		
 		return result;
@@ -73,7 +52,7 @@ class Stack<T>
 	
 	public boolean isEmpty()
 	{
-		return (currentNode == null || currentNode.getData() == null);
+		return (current == null);
 	}
 }
 

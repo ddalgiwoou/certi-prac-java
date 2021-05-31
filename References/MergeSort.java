@@ -27,7 +27,7 @@ class MergeSort
 
 		while (l <= mid && r <= right) 
 		{
-			if (arr[l] < arr[r]) 
+			if (arr[l] <= arr[r]) 
 			{
 				temp[idx++] = arr[l++];
 			}

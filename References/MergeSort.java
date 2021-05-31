@@ -9,7 +9,7 @@ class MergeSort
 		temp = null;
 	}
 	
-	private static void merge_sort(int[] arr, int left, int right) 
+	private static void sort(int[] arr, int left, int right) 
 	{	
 		if(left == right) return;
 		

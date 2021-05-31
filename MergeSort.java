@@ -1,7 +1,7 @@
 class MergeSort
 {
 	static int[] temp;
-	
+
 	public static void sort(int[] arr) 
 	{
 		temp = new int[arr.length];
@@ -10,16 +10,15 @@ class MergeSort
     }
 
     private static void merge_sort(int[] arr, int left, int right) 
-    {
-    	
+    {	
     	if(left == right) return;
 		
-		int mid = (left + right) / 2;	// 절반 위치 
+		int mid = (left + right) / 2;
 		
-		sort(arr, left, mid);		// 절반 중 왼쪽 부분리스트(left ~ mid)
-		sort(arr, mid + 1, right);	// 절반 중 오른쪽 부분리스트(mid+1 ~ right)
+		sort(arr, left, mid);
+		sort(arr, mid + 1, right);
 		
-		merge(arr, left, mid, right);		// 병합작업
+		merge(arr, left, mid, right);
     	
 //        for(int size = left + 1; size <= right; size += size) 
 //        {
@@ -50,8 +49,8 @@ class MergeSort
             }
         }
 
-        while (l <= mid) temp[idx++] = arr[l++];
-        while (r <= right) temp[idx++] = arr[r++];
+        while (l <= mid) 	temp[idx++] = arr[l++];
+        while (r <= right) 	temp[idx++] = arr[r++];
         
         for (int i = left; i <= right; i++) 
         {
